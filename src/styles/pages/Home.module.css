@@ -1,0 +1,178 @@
+.container {  
+  background-color: var(--backgroundDark);
+}
+
+.containerGeral{
+  display: grid;
+  overflow: hidden;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.slider{
+  transform: translateX(32vw);  
+  overflow: hidden;
+  align-items: center;
+  z-index: 1;
+  cursor: grab;
+}
+
+.slider:active{
+  cursor: grabbing;
+}
+
+.containerGameInfo{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 64.3%;
+  height: 100%;
+  background: linear-gradient(90deg, #111111 60.53%, rgba(17, 17, 17, 0) 100%);
+  z-index: 2;  
+  align-items: center;  
+  display: grid;      
+  grid-template-rows: max-content 1fr;
+}
+.containerGameInfo > div:first-child{
+  padding: 2rem;  
+}
+.title{
+  font-family: "VALORANT", arial,georgia,sans-serif;
+}
+
+.containerGameInfo > div:last-child{
+  padding: 3rem;
+  display: grid;
+  grid-auto-rows: max-content;  
+  gap: 1rem;
+  width: 34vw;
+}
+
+.containerGameInfo > div > h2{
+  font-size: 7rem;
+  animation: textAppearBottom 0.3s ease-out ;  
+}
+.containerGameInfo > div > p{  
+  animation: textAppearTop 0.3s ease-out ;  
+}
+
+.backgroundCard{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 35.7%;
+  height: 100%;
+  background-color: var(--color-primary);
+  z-index: 0;
+  display: grid;
+  padding: 2rem;
+}
+
+.backgroundCard > div{
+  display: flex;
+  height: fit-content;
+  align-self: flex-end;
+  justify-content: center;
+}
+
+.backgroundCard > div > button{
+  padding: 0.6rem 0.9rem;
+  background-color: var(--grey);
+  opacity: 1;
+}
+
+.backgroundCard > div > p{
+  padding: 0.6rem 1.2rem;
+  background-color: var(--background-dark);
+  opacity: 1;
+}
+
+.card{  
+  background-color: var(--grey);  
+  display: grid;  
+  grid-template-rows: 1fr max-content;
+  padding: 5rem 3rem ;
+  transition: height 0.2s ease-in-out;
+  
+}
+.card > img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.button > button{
+  background-color: var(--color-primary);
+  margin: 0.4rem;
+  width: 18rem;
+  height: 3.3rem;
+}
+
+@keyframes buttonAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textAppearBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  30%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textAppearTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  30%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.button{   
+  width: fit-content;   
+  height: 4.2rem;
+  justify-self: center;  
+  animation: buttonAppear 0.5s ease-out ;  
+  z-index: 1;
+  cursor: pointer;
+  align-self: end;
+}
+
+.button:after{
+  border: 1px solid hsla(38,22%,90%,.5);
+  border-top: 0;
+  height: calc(50% - 0.4rem);
+  content: "";
+  display: block;  
+  transform: translateY(-27px);
+}
+
+.button:before {  
+  border: 1px solid hsla(38,22%,90%,.5);
+  border-bottom: 0;
+  height: calc(50% - 0.4rem);
+  content: "";
+  transform: translateY(26px);
+  display: block;  
+}

@@ -1,0 +1,56 @@
+@import url(//db.onlinewebfonts.com/c/500000b38ae43ab9a1b11372480b6b48?family=DINNextW1G-Bold);
+@import url(//db.onlinewebfonts.com/c/7bb508fd7255ec38b6f29cb4cf8668cf?family=DINNextW1G-Regular);
+@import url(//db.onlinewebfonts.com/c/561f38b1f4570de0fb8a39d691ab058c?family=Tungsten+Bold);
+@import url(//db.onlinewebfonts.com/c/e7322a6673613ab13604fadda3d20e56?family=VALORANT);
+
+:root {
+  --background-dark: #111111;
+  --grey: #292929;
+  --color-primary: #FF4655;
+  --white: #ECE8E1
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "DINNextW1G-Regular",arial,georgia,sans-serif;
+}
+
+p {   
+  font-family: "DINNextW1G-Regular",arial,georgia,sans-serif;
+}
+
+h4 {
+  font-family: "DINNextW1G-Bold",arial,georgia,sans-serif;
+}
+
+h1,h2,h3 {
+  font-family: "Tungsten Bold",arial,georgia,sans-serif;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: "DINNextW1G-Bold",arial,georgia,sans-serif;
+  padding: 1rem 3rem;
+  font-size: 0.9rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+}
