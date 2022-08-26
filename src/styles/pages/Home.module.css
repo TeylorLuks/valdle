@@ -39,6 +39,7 @@
 }
 .title{
   font-family: "VALORANT", arial,georgia,sans-serif;
+  color: var(--white);
 }
 
 .containerGameInfo > div:last-child{
@@ -52,9 +53,11 @@
 .containerGameInfo > div > h2{
   font-size: 7rem;
   animation: textAppearBottom 0.3s ease-out ;  
+  color: var(--white);
 }
 .containerGameInfo > div > p{  
   animation: textAppearTop 0.3s ease-out ;  
+  color: var(--white);
 }
 
 .backgroundCard{

@@ -37,6 +37,7 @@ export default function Home() {
       gameName: 'GUESS THE BUNDLE',
       gameDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae possimus, quisquam laborum voluptates laboriosam officia pariatur autem hic accusantium magnam amet illum repellat nam, cumque dolore ducimus omnis nisi. Amet labore doloremque voluptate dignissimos et eaque quia doloribus libero vel quasi iure ab porro pariatur in a nam distinctio, necessitatibus, iusto ut. Repellendus incidunt error voluptas.',
       urlCard: 'https://rd1.com.br/wp-content/uploads/2020/09/20200915-rd1-programa-raul-gil.png',
+      page: '/bundles'
     }, 
     {
       gameName: 'QUIZZ VALORANT',
