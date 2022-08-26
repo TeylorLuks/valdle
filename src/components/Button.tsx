@@ -1,16 +1,26 @@
 import styles from '../styles/components/Button.module.css'
-export default function Button(){
-    return(
-        <div 
-          className={styles.button}
-          onClick={() => {
-            item.page &&
-              router.push(item.page)
-          }}
+
+interface ButtonProps{
+  onClick: () => void,
+  text: string,
+  stylesButton?: StyleSheet,
+  stylesDiv?: StyleSheet,
+}
+
+export default function Button(props : ButtonProps){
+  return(
+    <div 
+      className={styles.button}
+      style={props.stylesDiv}
+      onClick={() => {
+        props.onClick()
+      }}
+    >
+      <button
+        style={props.stylesButton}
       >
-        <button>
-          JOGAR
-        </button>
-      </div>
-    )
+        {props.text}
+      </button>
+    </div>
+  )
 }

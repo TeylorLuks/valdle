@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useKeenSlider, KeenSliderPlugin} from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useState } from 'react';
+import Button from '../components/Button'
 
 export default function Home() {
 
@@ -102,17 +103,13 @@ export default function Home() {
 
                 {
                   currentSlide === index &&
-                    <div 
-                      className={styles.button}
+                    <Button
+                      text='JOGAR'
                       onClick={() => {
                         item.page &&
-                          router.push(item.page)
+                        router.push(item.page)
                       }}
-                    >
-                      <button>
-                        JOGAR
-                      </button>
-                    </div>
+                    />                    
                 }                                
               </div>        
             ))

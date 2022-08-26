@@ -1,0 +1,46 @@
+
+.button > button{
+    background-color: var(--color-primary);
+    margin: 0.4rem;
+    max-width: 18rem;    
+    height: 3.3rem;
+  }
+  
+  @keyframes buttonAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .button{   
+    width: fit-content;   
+    height: 4.2rem;
+    justify-self: center;  
+    animation: buttonAppear 0.5s ease-out ;  
+    z-index: 1;
+    cursor: pointer;
+    align-self: end;
+  }
+  
+  .button:after{
+    border: 1px solid hsla(38,22%,90%,.5);
+    border-top: 0;
+    height: calc(50% - 0.4rem);
+    content: "";
+    display: block;  
+    transform: translateY(-27px);
+  }
+  
+  .button:before {  
+    border: 1px solid hsla(38,22%,90%,.5);
+    border-bottom: 0;
+    height: calc(50% - 0.4rem);
+    content: "";
+    transform: translateY(26px);
+    display: block;  
+  }
