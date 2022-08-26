@@ -1,10 +1,11 @@
+import { StyleHTMLAttributes } from 'react'
 import styles from '../styles/components/Button.module.css'
 
 interface ButtonProps{
   onClick: () => void,
   text: string,
-  stylesButton?: StyleSheet,
-  stylesDiv?: StyleSheet,
+  stylesButton?: any,
+  stylesDiv?: any,
 }
 
 export default function Button(props : ButtonProps){

@@ -1,16 +1,119 @@
 .containerGeral{
+    overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     width: 100vw;
     height: 100vh;
 }
 .containerGeral > div{
+    place-items: center;
+    height: 100vh;
     display: grid;
     position: relative;
 }
-.backgroundRight{
+.containerBundle{
+    width: 100%;
+    max-width: 46rem;
+    z-index: 1;
+    display: grid;
+    gap: 4rem;
+    justify-items: center;
+}
+.flipCard {
+    background-color: transparent;
+    width: 320px;
+    height: 452px;
+    perspective: 1000px;
+} 
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    animation: flipCardanimation 2s 0.5s ease-in-out forwards;
+    transform: scale(0);
+}
+@keyframes flipCardanimation{
+    0%{
+      
+        transform: rotateY(0) scale(0);
+    }
+    20%{ 
+        transform: rotateY(0) scale(1);
+    }
+    40%{
+        transform: rotateY(0);
+    }
+    100%{
+       
+        transform: rotateY(180deg);
+    }
+}
+.flipCardFront, .flipCardBack {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    }
+
+.flipCardFront {
+    background-color: #bbb;
+    color: black;
 }
+.flipCardBack {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
+.flipCardBack > img, .flipCardFront > img {
+    border: 1px solid var(--white);
+}
+.containerRight{
+    background-image:url('/bundleAssets/guessthebundle.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.containerButtons{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    row-gap: 2rem;
+    padding: 0 2rem;
+}
+@keyframes buttonAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+.containerButtons > button{
+    opacity: 0;
+    background-color: var(--grey);
+    color: var(--white);
+    height: 4rem;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.4));
+    border: 2px solid rgba(237, 233, 226, 0.4);
+}
+.containerButtons > button:nth-child(1){
+    animation: buttonAppear 0.5s 2.5s ease-out forwards;
+}
+.containerButtons > button:nth-child(2){
+    animation: buttonAppear 0.5s 2.7s ease-out forwards; 
+}
+.containerButtons > button:nth-child(3){
+    animation: buttonAppear 0.5s 2.9s ease-out forwards; 
+}
+.containerButtons > button:nth-child(4){
+    animation: buttonAppear 0.5s 3.1s ease-out forwards;
+}
+
+

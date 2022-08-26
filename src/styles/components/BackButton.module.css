@@ -1,0 +1,16 @@
+.button{
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  color:var(--white);
+  position: absolute;
+  background-color: transparent;
+  font-size: 1rem;
+  z-index: 3;
+  padding: 0rem;
+  top: 3rem;
+  left: 3rem;
+}
+.button > h4{
+  line-height: 1rem;
+}

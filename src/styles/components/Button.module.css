@@ -18,10 +18,11 @@
   }
   
   .button{   
+    opacity: 0;
     width: fit-content;   
     height: 4.2rem;
     justify-self: center;  
-    animation: buttonAppear 0.5s ease-out ;  
+    animation: buttonAppear 0.5s ease-out forwards;  
     z-index: 1;
     cursor: pointer;
     align-self: end;
