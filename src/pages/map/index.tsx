@@ -5,10 +5,9 @@ import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useState } from 'react';
 
-export default function Home() {
+export default function Map() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
-
 
   const dados = [
     {
