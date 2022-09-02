@@ -100,7 +100,6 @@ export default function Home() {
                 }}
               >                
                 <img src={item.urlCard} alt="" />
-
                 {
                   currentSlide === index &&
                     <Button

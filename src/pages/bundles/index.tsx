@@ -9,17 +9,18 @@ export default function Bundles(){
   
   const router = useRouter();
   const [dados,setDados] = useState(null);
-  useEffect(()=>{
-    axios.get('http://valdle-api.herokuapp.com/api/v1/bundle/',{
-      headers:{
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    .then(res => {
-      setDados(res.data)
-      console.log(res.data)
-    })
-  },[])
+
+  // useEffect(()=>{
+  //   axios.get('http://valdle-api.herokuapp.com/api/v1/bundle/',{
+  //     headers:{
+  //       'Access-Control-Allow-Origin': '*'
+  //     }
+  //   })
+  //   .then(res => {
+  //     setDados(res.data)
+  //     console.log(res.data)
+  //   })
+  // },[])
 
   return(
     <div className={styles.containerGeral}>
@@ -40,7 +41,7 @@ export default function Bundles(){
           </div> 
           <div className={styles.containerButtons}>    
             <button
-              onClick={()=> setNumero(numero+1)}
+              onClick={()=> alert('FUDEU')}
             >1</button>
             <button
              onClick={()=> alert('FUDEU 1')}

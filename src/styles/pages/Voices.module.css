@@ -1,0 +1,37 @@
+.containerGeral{
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  height: 100vh;
+  padding: 3rem;
+  gap: 2rem;  
+}
+.containerSlider{  
+  width: 100%;  
+}
+.containerAgent{  
+  width: 100%;
+  place-items: center;
+  display: grid;
+}
+.containerAgent > img{
+  height: 70vh;
+}
+.thumbnailSlider {    
+  height: 5.6rem;
+  cursor: pointer;  
+}
+
+.thumbnail {
+  width: fit-content;
+  height: fit-content;  
+  border: 1px solid #81CCBA;
+  padding: 2px;
+  display: grid;
+  place-items: center;
+}
+
+.thumbnail > img{
+  width: 5rem;
+  height: 5rem;  
+  background-color: #81ccba4d;
+}
