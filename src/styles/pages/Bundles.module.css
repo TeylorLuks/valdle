@@ -3,6 +3,11 @@
     display: grid;
     width: 100vw;
     height: 100vh;
+    background-image:url('/bundleAssets/guessthebundle.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.2s ease-in-out;
 }
 .containerGeral > div{
     place-items: center;
@@ -70,12 +75,7 @@
 .flipCardBack > img, .flipCardFront > img {
     border: 1px solid var(--white);
 }
-.containerRight{
-    background-image:url('/bundleAssets/guessthebundle.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
+
 .containerButtons{
     width: 100%;
     display: grid;
@@ -85,16 +85,6 @@
     row-gap: 2rem;
     padding: 0 2rem;
 }
-@keyframes buttonAppear {
-    0% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
 .containerButtons > button{
     opacity: 0;
     background-color: var(--grey);
@@ -102,6 +92,8 @@
     height: 4rem;
     filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.4));
     border: 2px solid rgba(237, 233, 226, 0.4);
+    display:grid;
+    place-items: center;
 }
 .containerButtons > button:nth-child(1){
     animation: buttonAppear 0.5s 2.5s ease-out forwards;
@@ -115,5 +107,32 @@
 .containerButtons > button:nth-child(4){
     animation: buttonAppear 0.5s 3.1s ease-out forwards;
 }
-
-
+@keyframes buttonAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+@media only screen and (max-width: 768px) {
+    .containerGeral {
+        display:grid;
+        grid-template-rows: max-content 1fr;
+        background-size: 115vh;
+    }
+    .containerBundle {
+        gap: 2rem;
+    }
+    .containerButtons{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1fr);
+        row-gap: 0.7rem;
+    }
+    .containerButtons > button {
+        height: 3rem;
+        padding: 0;
+    }
+  }

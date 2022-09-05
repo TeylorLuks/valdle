@@ -8,7 +8,16 @@ import styles from '../../styles/pages/Bundles.module.css'
 export default function Bundles(){
 
   const router = useRouter();
-  const [dados,setDados] = useState(null);
+  const [dados,setDados] = useState({
+    "bundle_image": "https://media.valorant-api.com/bundles/ae0c9cc4-4c03-f8d6-745c-84953db684fc/verticalpromoimage.png",
+    "answer": "Ruination",
+    "choices": [
+      "Ruination",
+      "Smite",
+      "Nunca Olvidados",
+      "Protocol 781-A",
+    ]
+  });
 
   useEffect(()=>{
     axios.get('https://api.valdle.com/v1/bundle/random',{
@@ -22,6 +31,14 @@ export default function Bundles(){
     })
   },[])
 
+  function verificaResposta(choice){
+    if(choice === dados.answer){
+      alert('ACERTO MIZERAVI')
+    }else{
+      alert('ERÔOOOOU')
+    }
+  }
+
   return(
     <div className={styles.containerGeral}>
       <BackButton
@@ -32,7 +49,7 @@ export default function Bundles(){
           <div className={styles.flipCard}>
             <div className={styles.flipCardInner}>
               <div className={styles.flipCardBack}>
-                <img src="https://media.valorant-api.com/bundles/cd095669-4a29-a7f3-e00d-f694186863cc/verticalpromoimage.png" alt="bundle" />
+                <img src={dados.bundle_image} alt="bundle" />
               </div>
               <div className={styles.flipCardFront}>
                 <img src="/bundleAssets/BackCard.png" alt="BackCard" />
@@ -40,31 +57,16 @@ export default function Bundles(){
             </div>
           </div> 
           <div className={styles.containerButtons}> 
-            <button
-              onClick={()=> alert('FUDEU')}
-            >1</button>
-            <button
-             onClick={()=> alert('FUDEU 1')}
-            >2</button>
-            <button
-             onClick={()=> alert('FUDEU 2')}
-            >3</button>
-            <button
-             onClick={()=> alert('FUDEU 3')}
-            >4</button>
+           {
+            dados.choices.map(choice =>(
+              <button
+                onClick={() => verificaResposta(choice)}
+              >
+                {choice}
+              </button>
+            ))
+           }
           </div>
-          <Button
-            onClick={() => alert('alguma coisa dentro')}
-            stylesButton={{
-              color: 'var(--white)',
-              width: '322px',
-              fontSize: '1.1rem'
-            }}
-            stylesDiv={{
-              animationDelay:'3.3s'
-            }}
-            text='CONFIRMAR'
-          />
         </div>
 
       </div>
