@@ -7,19 +7,19 @@ import styles from '../../styles/pages/Bundles.module.css'
 
 export default function Bundles(){
   
-  const router = useRouter();
-  const [dados,setDados] = useState(null);
-  useEffect(()=>{
-    axios.get('http://valdle-api.herokuapp.com/api/v1/bundle/',{
-      headers:{
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    .then(res => {
-      setDados(res.data)
-      console.log(res.data)
-    })
-  },[])
+  // // const router = useRouter();
+  // // const [dados,setDados] = useState(null);
+  // // // useEffect(()=>{
+  // // //   axios.get('http://valdle-api.herokuapp.com/api/v1/bundle/',{
+  // // //     headers:{
+  // // //       'Access-Control-Allow-Origin': '*'
+  // // //     }
+  // // //   })
+  // // //   .then(res => {
+  // // //     setDados(res.data)
+  // // //     console.log(res.data)
+  // // //   })
+  // },[])
 
   return(
     <div className={styles.containerGeral}>
