@@ -61,6 +61,7 @@
 }
 
 .backgroundCard{
+  color: var(--white);
   position: fixed;
   top: 0px;
   right: 0px;
@@ -83,6 +84,7 @@
   padding: 0.6rem 0.9rem;
   background-color: var(--grey);
   opacity: 1;
+  color: var(--white);
 }
 
 .backgroundCard > div > p{

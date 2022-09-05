@@ -2,7 +2,7 @@ import styles from '../styles/components/BackButton.module.css'
 
 interface ButtonProps{
   onClick: () => void,
-  stylesDiv?: StyleSheet,
+  stylesDiv?: any,
 }
 
 export default function BackButton(props : ButtonProps){
