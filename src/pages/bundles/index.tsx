@@ -106,8 +106,9 @@ export default function Bundles(){
               </div> 
               <div className={styles.containerButtons}> 
               {
-                dados.choices.map(choice =>(
+                dados.choices.map((choice, index) =>(
                   <button
+                    key={index}
                     onClick={() => verificaResposta(choice)}
                   >
                     {choice}
