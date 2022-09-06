@@ -5,6 +5,7 @@
     max-width: 18rem;    
     color: var(--white);
     height: 3.3rem;
+    
   }
   
   @keyframes buttonAppear {
@@ -22,8 +23,9 @@
     opacity: 0;
     width: fit-content;   
     height: 4.2rem;
-
-    justify-self: center;  
+    /* display: grid; */
+    place-items: center;
+    /* justify-self: center;   */
     animation: buttonAppear 0.5s ease-out forwards;  
     z-index: 1;
     cursor: pointer;

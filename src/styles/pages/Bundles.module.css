@@ -25,8 +25,11 @@
 }
 .flipCard {
     background-color: transparent;
-    width: 320px;
-    height: 452px;
+    max-width: 320px;
+    max-height: 452px;
+    height: 45vh;    
+    aspect-ratio: 9/13;
+    
     perspective: 1000px;
 } 
 .flipCardInner {
@@ -74,6 +77,14 @@
 }
 .flipCardBack > img, .flipCardFront > img {
     border: 1px solid var(--white);
+    max-width: 320px;
+    max-height: 452px;
+    height: 45vh;    
+    aspect-ratio: 9/13;
+}
+
+.flipCardBack > img{
+    filter: blur(6px);
 }
 
 .containerButtons{
@@ -94,9 +105,16 @@
     border: 2px solid rgba(237, 233, 226, 0.4);
     display:grid;
     place-items: center;
+    transition: 0.1s ease-in-out;
+}
+
+.containerButtons > button:hover{
+    transform: scale(1.5);
+    background-color: var(--color-primary);
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.8));
 }
 .containerButtons > button:nth-child(1){
-    animation: buttonAppear 0.5s 2.5s ease-out forwards;
+    animation: buttonAppear 0.5s 2.5s ease-out forwards;    
 }
 .containerButtons > button:nth-child(2){
     animation: buttonAppear 0.5s 2.7s ease-out forwards; 
@@ -107,6 +125,58 @@
 .containerButtons > button:nth-child(4){
     animation: buttonAppear 0.5s 3.1s ease-out forwards;
 }
+.containerModal{
+    display: grid;
+    padding: 1rem;
+    background-color: rgba(28, 32, 39, 0.88);    
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+    gap: 1rem;
+}
+.containerModal > h2{
+    color: var(--white);
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+}
+.containerButtonsModal{
+    padding: 0 2rem;
+    display: grid;
+    gap: 1rem;
+}
+.btnAgain{
+    background-color: var(--color-primary);
+    color: var(--white);
+    border: 1px solid var(--grey);
+    transition: 0.1s ease-in-out;
+}
+.btnStop{
+    background-color: var(--background-dark);
+    color: var(--white);
+    border: 1px solid var(--grey);
+    transition: 0.1s ease-in-out;
+}
+
+.btnAgain:hover, .btnStop:hover{
+    transform: scale(1.05);
+}
+.btnClose{
+    background-color: var(--grey);
+    padding: 0.2rem;
+    height: fit-content;
+    transition: 0.2s ease-out;
+    width: fit-content;
+    justify-self: end;
+}
+.btnClose> img{
+    transition: 0.1s ease-out;
+    height: 2rem;
+}
+.btnClose > img:hover{
+    transform: scale(1.1);
+    padding: 0rem;
+}
+
 @keyframes buttonAppear {
     0% {
       opacity: 0;

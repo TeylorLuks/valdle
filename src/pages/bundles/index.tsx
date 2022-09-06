@@ -1,74 +1,126 @@
 import { useEffect, useState } from 'react';
 import axios from '../../../node_modules/axios/index';
+import Head from '../../../node_modules/next/head';
 import { useRouter } from '../../../node_modules/next/router';
+import Popup from '../../../node_modules/reactjs-popup/dist/index';
 import BackButton from '../../components/BackButton'
 import Button from '../../components/Button'
+import Loader from '../../components/Loader';
 import styles from '../../styles/pages/Bundles.module.css'
 
 export default function Bundles(){
 
   const router = useRouter();
-  const [dados,setDados] = useState({
-    "bundle_image": "https://media.valorant-api.com/bundles/ae0c9cc4-4c03-f8d6-745c-84953db684fc/verticalpromoimage.png",
-    "answer": "Ruination",
-    "choices": [
-      "Ruination",
-      "Smite",
-      "Nunca Olvidados",
-      "Protocol 781-A",
-    ]
-  });
+  const [dados,setDados] = useState(null);
+  const [open, setOpen] = useState(false)
+  const [response, setResponse] = useState(null)
 
   useEffect(()=>{
-    axios.get('https://api.valdle.com/v1/bundle/random',{
-      headers:{
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    .then(res => {
-      setDados(res.data)
-      console.log(res.data)
-    })
+    if(!dados){
+      getData();
+    }          
   },[])
 
-  function verificaResposta(choice){
-    if(choice === dados.answer){
-      alert('ACERTO MIZERAVI')
-    }else{
-      alert('ERÔOOOOU')
-    }
+  function getData(){
+    setDados(null)
+    axios.get('https://api.valdle.com/v1/bundles/random')
+    .then(res => {
+      setDados(res.data)      
+    })
+  }
+
+  function verificaResposta(choice){        
+    setOpen(true)          
+    setResponse(choice)
   }
 
   return(
     <div className={styles.containerGeral}>
+      <Head>
+        <title>Guess the Bundle</title>
+        <meta name="description" content="Guess the bundle" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <BackButton
         onClick={() => router.push('/')}
       />
+
+      <Popup        
+        modal        
+        open={open}
+        contentStyle={{ 
+          padding: '0', 
+          display: 'grid',
+          border: 'none',                  
+        }}
+        overlayStyle={{
+          backgroundColor: '#00000050'
+        }}
+      >      
+        <div className={styles.containerModal}>          
+          <button onClick={() => setOpen(false)} className={styles.btnClose}>
+            <img src="/closeIcon.svg" alt="" />
+          </button>
+          {
+            response === dados?.answer ?
+              <h2>Acertou miseravi</h2> 
+            :
+              <h2>Erôu</h2> 
+          }
+
+          <div
+            className={styles.containerButtonsModal}
+          >
+            <button
+              onClick={() => setOpen(false)}
+              className={styles.btnStop}
+            >
+              Parar
+            </button>
+            <button 
+              onClick={() => {
+                setOpen(false)
+                getData();
+              }}
+              className={styles.btnAgain}
+            >
+              Jogar Novamente
+            </button>
+          </div>
+          
+        </div>                  
+      </Popup>
       <div className={styles.containerRight}>
-        <div className={styles.containerBundle}>
-          <div className={styles.flipCard}>
-            <div className={styles.flipCardInner}>
-              <div className={styles.flipCardBack}>
-                <img src={dados.bundle_image} alt="bundle" />
-              </div>
-              <div className={styles.flipCardFront}>
-                <img src="/bundleAssets/BackCard.png" alt="BackCard" />
+        {
+          dados ?          
+            <div className={styles.containerBundle}>
+              <div className={styles.flipCard}>
+                <div className={styles.flipCardInner}>
+                  <div className={styles.flipCardBack}>
+                    <img src={dados.bundle_image} alt="bundle" />
+                  </div>
+                  <div className={styles.flipCardFront}>
+                    <img src="/bundleAssets/BackCard.png" alt="BackCard" />
+                  </div>
+                </div>
+              </div> 
+              <div className={styles.containerButtons}> 
+              {
+                dados.choices.map(choice =>(
+                  <button
+                    onClick={() => verificaResposta(choice)}
+                  >
+                    {choice}
+                  </button>
+                ))
+              }
               </div>
             </div>
-          </div> 
-          <div className={styles.containerButtons}> 
-           {
-            dados.choices.map(choice =>(
-              <button
-                onClick={() => verificaResposta(choice)}
-              >
-                {choice}
-              </button>
-            ))
-           }
-          </div>
-        </div>
-
+          :
+            <div>
+              <Loader/>
+            </div>
+        }        
       </div>
     </div>
   )
