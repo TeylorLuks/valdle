@@ -5,10 +5,7 @@ import {
   KeenSliderInstance,
 } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import { MutableRefObject, useState } from 'react'
-
-
-
+import { MutableRefObject, useState, useEffect } from 'react'
 
 export default function Voices(){
   
@@ -16,13 +13,13 @@ export default function Voices(){
     return (slider) => {
       function removeActive() {
         slider.slides.forEach((slide) => {
-          slide.classList.remove("active")
+          slide.classList.remove(styles.active)
         })
       }
       function addActive(idx: number) {
-        slider.slides[idx].classList.add("active")
+        slider.slides[idx].classList.add(styles.active)
       }
-
+  
       function addClickEvents() {
         slider.slides.forEach((slide, idx) => {
           slide.addEventListener("click", () => {
@@ -30,20 +27,22 @@ export default function Voices(){
           })
         })
       }
-
+  
       slider.on("created", () => {
         if (!mainRef.current) return
         addActive(slider.track.details.rel)
         addClickEvents()
-        mainRef.current.on("animationStarted", (main) => {
+        mainRef.current.on("animationStarted", (main) => {          
           removeActive()
           const next = main.animator.targetIdx || 0
           addActive(main.track.absToRel(next))
-          slider.moveToIdx(next)
+          slider.moveToIdx(main.track.absToRel(next))         
         })
       })
     }
   }
+
+  
 
   const agents = [
     {
@@ -1491,35 +1490,26 @@ export default function Voices(){
       }
     }
   ]
-
-  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const [opacities, setOpacities] = useState<number[]>([])
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    initial: 0,
-    loop: true,
-    slides: {      
-      origin: "center",        
-      spacing: 10,    
-    },
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
-    },    
-
+    slides: agents.length,
+    loop: true,    
+    detailsChanged(s) {      
+      const new_opacities = s.track.details.slides.map((slide) => slide.portion)
+      setOpacities(new_opacities)
+    },   
   })
   const [thumbnailRef] = useKeenSlider<HTMLDivElement>(
-    {
-      initial: 0,
-      loop: true,
+    {      
+      loop: true,      
       slides: {
         perView: 'auto',
         spacing: 10,
         origin: "center",
-      },
-      slideChanged(slider) {
-        setCurrentSlide(slider.track.details.rel)
-      },    
-    },
-    
+      },   
+    },    
     [ThumbnailPlugin(instanceRef)]
   )
   
@@ -1528,15 +1518,22 @@ export default function Voices(){
     <div 
       className={styles.containerGeral}
       style={{
-        background: `radial-gradient(100% 217.41% at 83.2% 100%, #${agents[currentSlide].backgroundGradientColors[3]} 0%, #${agents[currentSlide].backgroundGradientColors[2]} 51.4%, #${agents[currentSlide].backgroundGradientColors[1]} 100%`        
+        // background: `radial-gradient(100% 217.41% at 83.2% 100%, #${agents[currentSlide].backgroundGradientColors[3]} 0%, #${agents[currentSlide].backgroundGradientColors[2]} 51.4%, #${agents[currentSlide].backgroundGradientColors[1]} 100%`,                
       }}
     >
-      <div ref={sliderRef} className={`keen-slider ${styles.containerSlider}`}>
+      <div ref={sliderRef} className={styles.fader}>
         {
           agents.map((item, index) => (            
-            <div key={index} className={`keen-slider__slide`}>
+            <div 
+              key={index} 
+              className={styles.faderSlide}
+              style={{
+                opacity: opacities[index],
+                background: `radial-gradient(100% 217.41% at 83.2% 100%, #${item.backgroundGradientColors[3]} 0%, #${item.backgroundGradientColors[2]} 51.4%, #${item.backgroundGradientColors[1]} 100%`,                
+              }}
+            >
               <div className={styles.containerAgent}>
-                <img loading='lazy' src={item.fullPortrait} alt="" />              
+                <img src={item.fullPortrait} alt="" />              
               </div>              
             </div>
           ))
@@ -1547,7 +1544,7 @@ export default function Voices(){
         {
           agents.map((item, index) => (
             <div key={index} className={`keen-slider__slide ${styles.thumbnail}`}>
-              <img loading='lazy' src={item.displayIconSmall} alt="" />
+              <img  src={item.displayIconSmall} alt="" />
             </div>
           ))
         }          

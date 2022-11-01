@@ -1,5 +1,8 @@
 .container {  
   background-color: var(--backgroundDark);
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .containerGeral{
@@ -15,7 +18,14 @@
   overflow: hidden;
   align-items: center;
   z-index: 1;
-  cursor: grab;
+  cursor: grab;  
+  -webkit-mask-image: linear-gradient( 
+    to left, 
+    black 68%, 
+    transparent 95%
+  );    
+    background-attachment: fixed;
+  
 }
 
 .slider:active{
@@ -26,9 +36,10 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 64.3%;
+  width: fit-content;
+  max-width: 40%;
   height: 100%;
-  background: linear-gradient(90deg, #111111 60.53%, rgba(17, 17, 17, 0) 100%);
+  background-color: #111111;
   z-index: 2;  
   align-items: center;  
   display: grid;      
@@ -84,12 +95,16 @@
   padding: 0.6rem 0.9rem;
   background-color: var(--grey);
   opacity: 1;
+  display: grid;
+  place-items: center;
   color: var(--white);
 }
 
 .backgroundCard > div > p{
   padding: 0.6rem 1.2rem;
   background-color: var(--background-dark);
+  display: grid;
+  place-items: center;
   opacity: 1;
 }
 

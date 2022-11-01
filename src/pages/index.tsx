@@ -6,6 +6,8 @@ import { useKeenSlider, KeenSliderPlugin} from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useEffect, useState } from 'react';
 import Button from '../components/Button'
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export default function Home() {
 
@@ -156,13 +158,17 @@ export default function Home() {
               onClick={(e: any) =>
                 e.stopPropagation() || instanceRef.current?.prev()                
               }
-            >{`<`}</button>
+            >
+              <KeyboardArrowLeftIcon/>
+            </button>
             <p>{currentSlide + 1}/{dados.length}</p>
             <button
               onClick={(e: any) =>
                 e.stopPropagation() || instanceRef. current?.next()
               }
-            >{`>`}</button>
+            >
+              <KeyboardArrowRightIcon/>
+            </button>
           </div>          
         </div>
         <div className={styles.containerGameInfo}>
