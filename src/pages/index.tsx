@@ -68,8 +68,7 @@ export default function Home() {
       spacing: 30,
     },    
     loop: true,
-    rtl: false,    
-    mode: "free-snap",
+    rtl: false,        
     initial: 0,
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)

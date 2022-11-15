@@ -1,40 +1,153 @@
 .containerGeral{    
   height: 100vh;    
   position: relative;
+  display: grid;
   animation: opacity 1s ease-in-out;
 }
 
 .containerSlider{  
   width: 100%;  
+  
 }
 .containerAgent{  
   width: 100%;
   justify-content: center;
-  display: flex;  
+  display: flex;    
   position: relative;
   height: 100%;
   padding: 1rem 1rem 8rem 1rem;
 }
-.containerAgent > img{
-  height: 100%;
+.containerAgent > img:first-child{
+  height: 164%;
   position: relative;
+  z-index: 1;
+  transform: translateY(-10vh);
+}
+.agentBackground{
+  position: absolute;
+  height: 100%;
+  z-index: 0;
+  transform: translate(-9rem, -5rem);  
+  opacity: 0.4;
+  animation: flick 8s ease infinite;    
+}
+
+@keyframes flick {
+  0% { opacity: 0; }
+  2% { opacity: 0.4; }
+  4% { opacity: 0.6; }
+  6% { opacity: 0; }
+  8% { opacity: 0.4; }
+  10% { opacity: 0.; }
+  12% { opacity: 0.4; }
+  100% { opacity: 0.4; }
+}
+
+.agentInfo{
+  display: flex;
+  position: absolute;
+  flex-direction: row-reverse;
+  right: 0;
+  height: 100%;
+  z-index: 3;
+  min-width: fit-content;
+  padding: 0 8vw 0 0;
+  place-items: flex-start;
+}
+
+.agentName{
+  display: grid;
+  position: relative;
+  grid-gap: 0rem;
+  grid-template-columns: 7rem 1fr;
+  gap: 0rem;
+  align-self: center;
+  transform: translateY(-16vh);
+}
+
+.agentName > div {
+  padding: 1.53rem 0 3rem 0;  
+  height: fit-content;
+}
+
+.agentName div > h4 {
+  font-family: "DINNextW1G-Bold", arial,georgia,sans-serif;
+  color: var(--white);
+  line-height: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.agentName div > h3 {
+  color: var(--yellow);
+  font-size: 8rem;
+  line-height: 7rem;
+  margin-bottom: 1rem;
+}
+
+.agentName div > p {
+  margin-top: 1rem;
+  width: 20vw;
+  color: var(--white);
+  font-family: "DINNextW1G-Regular", arial,georgia,sans-serif;
+}
+
+.agentName div > hr{
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 120%;
+  transform: translateX(-36px);
+}
+
+
+.containerAudio{
+  position: absolute;
+  left: 0;
+  padding: 0 0 0 8vw;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  height: 63%;
+  gap: 1rem;
+}
+
+.containerAudio > h2{
+  color: var(--white);
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .fader {
   height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;  
 }
 
 .faderSlide {
+  cursor: grab;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
+  display: flex;
+  padding-top: 4rem;
+  justify-content: space-around;
+}
+
+.faderSlide:active{
+  cursor: grabbing;
+}
+
+.lineAgents{
+  position: absolute;
+  justify-self: center;
+  display: grid;
+  bottom: 8.8rem;
+  width: 85%;
+  z-index: 2;
 }
 
 .thumbnailSlider {    
-  
+  z-index: 5;
   cursor: pointer;  
   position: absolute !important;
   bottom: 30px;
@@ -46,7 +159,7 @@
   height: fit-content;  
   min-height: 5.6rem;
   min-width: 5.6rem;
-  border: 1px solid #81CCBA;
+  border: 1px solid var(--blue);
   padding: 3px;
   display: grid;
   place-items: center;
@@ -64,5 +177,5 @@
 }
 
 .active {
-  border: 1px solid #ccbe81 ; 
+  border: 1px solid var(--yellow) ; 
 }

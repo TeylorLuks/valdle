@@ -1,4 +1,5 @@
 import styles from '../../styles/pages/Voices.module.css'
+import AudioPlayer from '../../components/AudioPlayer'
 import {
   useKeenSlider,
   KeenSliderPlugin,
@@ -6,6 +7,59 @@ import {
 } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { MutableRefObject, useState, useEffect } from 'react'
+import Button from '../../components/Button'
+
+
+interface MediaProps {
+  id: number,
+  wwise: string,
+  wave: string
+}
+
+interface VoiceLineProps {
+  minDuration: number,
+  maxDuration: number,
+  mediaList: [MediaProps] | MediaProps[]
+}
+
+interface AbilitieProps{  
+  slot: string,
+  displayName: string,
+  description: string,
+  displayIcon: string  
+}
+
+interface RoleProps {  
+  uuid: string,
+  displayName: string,
+  description: string,
+  displayIcon: string,
+  assetPath: string  
+}
+
+export interface AgentProps {
+    uuid: string,
+    displayName: string,
+    description: string,
+    developerName: string,
+    characterTags: null | [string] | string[],
+    displayIcon: string,
+    displayIconSmall: string,
+    bustPortrait: null | string,
+    fullPortrait: string,
+    fullPortraitV2: null | string,
+    killfeedPortrait: string,
+    background: string,
+    backgroundGradientColors: [string] | string[],
+    assetPath: string,
+    isFullPortraitRightFacing: boolean,
+    isPlayableCharacter: boolean,
+    isAvailableForTest: boolean,
+    isBaseContent: boolean,
+    role: RoleProps,
+    abilities: [AbilitieProps] | AbilitieProps[],
+    voiceLine: VoiceLineProps
+  }
 
 export default function Voices(){
   
@@ -42,7 +96,6 @@ export default function Voices(){
     }
   }
 
-  
 
   const agents = [
     {
@@ -529,78 +582,6 @@ export default function Voices(){
             "id": 246514732,
             "wwise": "https://media.valorant-api.com/sounds/246514732.wem",
             "wave": "https://media.valorant-api.com/sounds/246514732.wav"
-          }
-        ]
-      }
-    },
-    {
-      "uuid": "ded3520f-4264-bfed-162d-b080e2abccf9",
-      "displayName": "Sova",
-      "description": "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide. ",
-      "developerName": "Hunter_NPE",
-      "characterTags": [
-        "Detection",
-        "Area Damage"
-      ],
-      "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/displayicon.png",
-      "displayIconSmall": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/displayiconsmall.png",
-      "bustPortrait": null,
-      "fullPortrait": null,
-      "fullPortraitV2": null,
-      "killfeedPortrait": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/killfeedportrait.png",
-      "background": null,
-      "backgroundGradientColors": [
-        "f7c7a5ff",
-        "392931ff",
-        "101c47ff",
-        "082652ff"
-      ],
-      "assetPath": "ShooterGame/Content/Characters/Hunter/Hunter_NPE_PrimaryAsset",
-      "isFullPortraitRightFacing": false,
-      "isPlayableCharacter": false,
-      "isAvailableForTest": false,
-      "isBaseContent": false,
-      "role": null,
-      "abilities": [
-        {
-          "slot": "Ability1",
-          "displayName": "Shock Bolt",
-          "description": "EQUIP a bow with a shock bolt. FIRE to send the explosive bolt forward, detonating upon collision and damaging players nearby. HOLD FIRE to extend the range of the projectile. ALTERNATE FIRE to add up to two bounces to this arrow.",
-          "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/ability1/displayicon.png"
-        },
-        {
-          "slot": "Ability2",
-          "displayName": "Recon Bolt",
-          "description": "EQUIP a bow with recon bolt. FIRE to send the recon bolt forward, activating upon collision and revealing the location of nearby enemies caught in the line of sight of the bolt. Enemies can destroy this bolt. HOLD FIRE to extend the range of the projectile. ALTERNATE FIRE to add up to two bounces to this arrow. ",
-          "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/ability2/displayicon.png"
-        },
-        {
-          "slot": "Grenade",
-          "displayName": "Owl Drone",
-          "description": "EQUIP an owl drone. FIRE to deploy and take control of movement of the drone. While in control of the drone, FIRE to shoot a marking dart. This dart will reveal the location of any player struck by the dart.",
-          "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/grenade/displayicon.png"
-        },
-        {
-          "slot": "Ultimate",
-          "displayName": "Hunter's Fury",
-          "description": "EQUIP a bow with three long-range, wall-piercing energy blasts. FIRE to release an energy blast in a line in front of Sova, dealing damage and revealing the location of enemies caught in the line. This ability can be RE-USED up to two more times while the ability timer is active.",
-          "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/ultimate/displayicon.png"
-        },
-        {
-          "slot": "Passive",
-          "displayName": "Uncanny Marksman",
-          "description": "Sova's custom bow can fire his arrows and bounce them off terrain. Holding fire charges the bow's power, and the bolt is loosed when released. Press alt fire to change the number of bounces.Your arrows can bounce off terrain. Holding left click increases the bow's range trajectory. Right clicking Toggle through the desired number of terrain bounces by right clicking. The arrow is loosed when left click is released.",
-          "displayIcon": null
-        }
-      ],
-      "voiceLine": {
-        "minDuration": 2.021729,
-        "maxDuration": 2.021729,
-        "mediaList": [
-          {
-            "id": 130865070,
-            "wwise": "https://media.valorant-api.com/sounds/130865070.wem",
-            "wave": "https://media.valorant-api.com/sounds/130865070.wav"
           }
         ]
       }
@@ -1513,6 +1494,9 @@ export default function Voices(){
     [ThumbnailPlugin(instanceRef)]
   )
   
+  function confirmaResposta(item : AgentProps){
+    alert(item.displayName)
+  }
 
   return(    
     <div 
@@ -1532,14 +1516,41 @@ export default function Voices(){
                 background: `radial-gradient(100% 217.41% at 83.2% 100%, #${item.backgroundGradientColors[3]} 0%, #${item.backgroundGradientColors[2]} 51.4%, #${item.backgroundGradientColors[1]} 100%`,                
               }}
             >
+              <div className={styles.containerAudio}>
+                <h2>Guess the Voice</h2>
+                <AudioPlayer
+                  key={item.voiceLine?.mediaList[0].id}
+                  agentInfo={item}
+                  audio=""
+                />
+                <Button
+                  onClick={() => confirmaResposta(item)}
+                  text='Confirmar'
+                  stylesButton={{
+                    background: `linear-gradient(107.94deg, #${item?.backgroundGradientColors[2]} 0%, #${item?.backgroundGradientColors[1]} 80.73%)`
+                  }}
+                />
+              </div>              
               <div className={styles.containerAgent}>
                 <img src={item.fullPortrait} alt="" />              
+                <img className={styles.agentBackground} src={item.background} alt="" />                
+              </div>              
+              <div className={styles.agentInfo}>
+                <div className={styles.agentName}>  
+                  <img src="detailAgentInfo.svg" alt="" />  
+                  <div>
+                    <h4>{item.role.displayName.toUpperCase()}</h4>
+                    <h3>{item.displayName.toUpperCase()}</h3>
+                    <hr />
+                    <p>{item.description}</p>
+                  </div>                                                    
+                </div>                                                                
               </div>              
             </div>
           ))
         }                
       </div>
-
+      <img className={styles.lineAgents} src="lineAgents.svg" alt="" />
       <div ref={thumbnailRef} className={`keen-slider ${styles.thumbnailSlider}`}>
         {
           agents.map((item, index) => (

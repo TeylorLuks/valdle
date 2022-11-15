@@ -24,7 +24,7 @@
     black 68%, 
     transparent 95%
   );    
-    background-attachment: fixed;
+  background-attachment: fixed;
   
 }
 
@@ -196,6 +196,7 @@
   }
   .slider{
     transform: translateX(0);
+    -webkit-mask-image: none;    
   }
 
   .backgroundCard > div{

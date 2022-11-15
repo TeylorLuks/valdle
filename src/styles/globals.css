@@ -21,7 +21,11 @@
   --background-dark: #111111;
   --grey: #292929;
   --color-primary: #FF4655;
-  --white: #ECE8E1
+  --white: #ECE8E1;
+  --yellow: #EAEEB2;
+  --light-blue: #8FE0DB;
+  --blue: #81CCBA;
+  --dark-blue: #66A399;
 }
 
 html,
